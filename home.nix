@@ -3,6 +3,8 @@
   home = {
     packages = with pkgs; [
       hello
+      home-manager
+      pandoc
     ];
 
     username = "y";
