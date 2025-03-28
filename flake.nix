@@ -2,16 +2,15 @@
   description = "My Home Manager configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... } @ inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -22,6 +21,9 @@
         y = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [./home.nix];
+	  extraSpecialArgs = {
+	    inherit inputs;
+	  };
         };
       };
     };

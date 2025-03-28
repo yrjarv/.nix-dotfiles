@@ -5,6 +5,8 @@
       hello
       home-manager
       pandoc
+      emacs-pgtk
+      waybar
     ];
 
     username = "y";
@@ -13,4 +15,7 @@
     # NEVER change!
     stateVersion = "23.11";
   };
+
+  imports = [
+  ];
 }
